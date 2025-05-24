@@ -77,7 +77,7 @@ function fb_RegistrationPage(){
              'color: ' + COLAD_D + '; background-color: ' + COLAD_E + ';');
     console.log("Registration Working page");
 
-    window.location = '/pages/registration_page.html';
+    window.location = 'pages/registration_page.html';
 }
 
 
