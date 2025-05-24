@@ -65,7 +65,7 @@ function fb_GamePage(){
              'color: ' + COLAD_D + '; background-color: ' + COLAD_E + ';');
     console.log("Game page working")
     
-    window.location = './pages/game_page.html';
+    window.location = '../pages/game_page.html';
 }
 
 /**************************************************************/
@@ -77,7 +77,7 @@ function fb_RegistrationPage(){
              'color: ' + COLAD_D + '; background-color: ' + COLAD_E + ';');
     console.log("Registration Working page");
 
-    window.location = './pages/registration_page.html';
+    window.location = '../pages/registration_page.html';
 }
 
 
