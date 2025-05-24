@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>GeoDash</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="12COMP P5.play">
+  <meta name="keywords" content="12COMP, P5.play">
+  <meta name="author" content="Mr Britton">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../styles/GamePage.css" rel="stylesheet" type="text/css" />
+
+
+  <!-- P5.js & P5.play *****************************-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.8.0/p5.js" integrity="sha512-bzpp8klYroR6PFgL3RJ+VkvY5hJna7Zd38OA56peUDHSNQpSiN9lDQVnMYtcw7hoAVhbR6mAOdH+ymzg1o+G0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.8.0/addons/p5.sound.js" integrity="sha512-TU9AWtV5uUZPX8dbBAH8NQF1tSdigPRRT82vllAQ1Ke28puiqLA6ZVKxtUGlgrH6yWFnkKy+sE6luNEGH9ar0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://p5play.org/v3/planck.min.js"></script>
+  <script src="https://p5play.org/v3/p5play.js"></script>
+ 
+  <!-- firebase start ****************************************-->
+  <!-- Firebase App (core Firebase SDK) is always required & must be listed 1st -->
+  <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>  
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-auth.js"></script>  
+  <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-analytics.js"></script>
+  <!-- firebase end ******************************************-->
+ 
+ 
+  <script src="../fb_setup.js"></script>
+  <script src="../script.js"></script>
+</head>
+
+
+<!--***************************************************
+  BODY
+****************************************************-->
+<body>
+  <div class="box-1">
+    <div id="user-info"></div>
+    <div id="user-highscores"></div>
+
+    <main>
+        <div class="w3-container w3-row">
+            <div class="w3-container w3-grey w3-col m10">
+            </div>
+        </div>
+    </main>
+  </div>
+
+    <div class="game">
+      <script src="../scripts/GeoDash.js"></script>
+    </div>
+   
+    <div class="Background">
+        <img
+            src="https://codehs.com/uploads/01d64e7e861f5720ff09ba78f6e3f375"
+            class="background-image"
+        />
+    </div>
+
+
+</body>
+</html>
+<!--***************************************************
+  END OF GAME1.HTML
+****************************************************-->

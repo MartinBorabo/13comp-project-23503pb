@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Landing Page</title>
+  <link href="styles/style.css" rel="stylesheet" type="text/css" />
+ 
+  <!-- firebase start ****************************************-->
+  <!-- Firebase App (core Firebase SDK) is always required & must be listed 1st -->
+  <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>  
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-auth.js"></script>  
+  <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-analytics.js"></script>
+  <!-- firebase end ******************************************-->
+  <script src="fb_setup.js"></script>
+  <script defer src="script.js"></script>
+</head>
+
+<body>
+    <div class="Container">
+        <div class="Header">
+            <h1>Welcome!</h1>
+        </div>
+        <div class="SubHeader">
+            <h2>
+                Please Click The Button To Continue
+            </h2>
+        </div>
+
+        <div class="Buttons">
+            <button class="Button" onClick="runAll()">START</button>
+        </div>
+    </div>
+   
+    <div class="Background">
+        <img
+            src="https://codehs.com/uploads/01d64e7e861f5720ff09ba78f6e3f375"
+            class="background-image"
+        />
+    </div>
+</body>
+
+</html>

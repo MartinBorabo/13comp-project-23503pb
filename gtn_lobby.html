@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+    table, th, td {
+    border: 1px solid black;
+    }
+    </style>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>GTN Lobby</title>
+    <link href="gtn_lobby.css" rel="stylesheet" type="text/css" />
+
+    <!-- firebase start ****************************************-->
+    <!-- Firebase App (core Firebase SDK) is always required & must be listed 1st -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>  
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-auth.js"></script>  
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-analytics.js"></script>
+    <!-- firebase end ******************************************-->
+    <script src="fb_setup.js"></script>
+    <script defer src="../admin/admin_button.js"></script>
+    <script defer src="gtn.js"></script>
+    <script defer src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+</head>
+<body>
+
+  <nav>
+    <h1>Guess the number</h1>
+    
+    <ul>
+      <li id="backButton" style="float:right"><a class="active" href="pages/game_page.html">Back</a></li>
+      <li id="adminButton" style="float:right; display:none"><a class="active" href="admin/ad_manager.html">Admin</a></li>
+    </ul>
+
+  </nav>
+
+  <!--<button id="btn_createLobby">Create Lobby</button>-->
+  <div class="controls">
+    <button onclick="Create_lobby()">Create a Lobby</button>
+    <button onclick="gtn_buildTableFunc()">Refresh Lobbies</button>
+  </div>
+
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Wins</th>
+          <th>Draws</th>
+          <th>Losses</th>
+          <th>Join</th>
+        </tr>
+      </thead>
+
+      <tbody id='tb_gtnLobby'>
+      </tbody>
+        
+    </table>
+  </div>
+</body>
+</html>
+
+

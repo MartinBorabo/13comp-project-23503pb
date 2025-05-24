@@ -1,0 +1,124 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  align-items: center;
+  background-color: #E9DCC9;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  height: 90vh;
+  width: 95%;
+  gap: 20px;
+  align-items: stretch;
+}
+
+/* -- Player Sections -- */
+.player {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 10px;
+  justify-content: flex-start;
+  width: 25%;
+  box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%);
+}
+
+.profile {
+  display: flex;
+  align-items: end;
+}
+
+.photo {
+  width: 100px;
+  height: 100px;
+  background-color: gray;
+  margin-right: 10px;
+  border-radius: 5px;
+}
+
+.player-name {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.scores {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 30px 0px 0px 0px;
+}
+
+.high-scores {
+  background-color: #eed9c4;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.current-scores {
+  background-color: #B6D0E2;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+/* -- Guessing Section --*/
+.main {
+  background-color: white;
+  border-radius: 10px;
+  padding: 0px 0px 20px 0px;
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+  box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%);
+}
+
+.main h1 {
+  background-color: #636363;
+  text-align: center;
+  padding: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  color: white;
+  box-shadow: 0px 2px 0px 0px rgb(0 0 0 / 20%);
+}
+
+.main p {
+  text-align: center; 
+}
+
+.main input {
+  display: block;
+  font-size: 16px;
+  padding: 15px;
+  width: 60%;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%);
+}
+
+.main button {
+  display: block;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%);
+}
+
+.guess-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  text-align: center;
+  flex-grow: 1;
+}

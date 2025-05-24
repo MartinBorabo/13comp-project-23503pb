@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Guess the Number</title>
+  <link rel="stylesheet" href="gtn_game.css">
+
+    <!-- firebase start ****************************************-->
+    <!-- Firebase App (core Firebase SDK) is always required & must be listed 1st -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>  
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-auth.js"></script>  
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-analytics.js"></script>
+    <!-- firebase end ******************************************-->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Load jQuery -->
+    <script defer src="fb_setup.js"></script>
+    <script defer src="script.js"></script>
+    <script defer src="gtn.js"></script>
+
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="player player--1">
+      <div class="profile">
+        <div class="photo"><img id="image_photo1"></div>
+        <div class="player-name" id="p1_gameName">Waiting...</div>
+      </div>
+
+      <div class="scores">
+        <div class="current-scores">
+          <h2>Current Scores</h2>
+          <br>
+          <p id="p1_gameWins">Wins:  </p>
+          <p id="p1_gameLosses">Losses:  </p>
+        </div>
+        
+        <div class="high-scores">
+          <h2>Highscores</h2>
+          <br>
+          <p id="p1_highScoresWins">Wins:  </p>
+          <p id="p1_highScoresLosses">Losses:  </p>
+        </div>
+      </div>
+    </div>
+  
+    <div class="main">
+      <h1>Guess The Number</h1>
+      <div class="guess-section">
+        <p>Guess a number between 1-100</p>
+        <input id="guess" min="1" max="100" type="number" placeholder="Enter your guess">
+        <button id="submit" onclick="submitButton()">Submit</button>
+
+        <p id="hint"></p>
+        <p id="attempts"></p>
+      </div>
+    </div>
+
+    <div class="player player--2">
+      <div class="profile">
+        <div class="photo"><img id="image_photo2"></div>
+        <div class="player-name" id="p2_gameName">Waiting...</div>
+      </div>
+
+      <div class="scores">
+        <div class="current-scores">
+          <h2>Current Scores</h2>
+          <br>
+          <p id="p2_gameWins">Wins:  </p>
+          <p id="p2_gameLosses">Losses:  </p>
+        </div>
+
+        <div class="high-scores">
+          <h2>Highscores</h2>
+          <br>
+          <p id="p2_highScoresWins">Wins:  </p>
+          <p id="p2_highScoresLosses">Losses:  </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
