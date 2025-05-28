@@ -314,6 +314,179 @@ function updatePlayerInfoUI() {
 
 /* ------------------------------------------------------------------- */
 
+let lobbyUid;
+let currentUserUid;
+let currentPlayer = null;
+let guessInput, hintEl, attemptsEl;
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    guessInput = document.getElementById("guess");
+    hintEl = document.getElementById("hint");
+    attemptsEl = document.getElementById("attempts");
+
+
+    const params = new URLSearchParams(window.location.search);
+    lobbyUid = params.get('lobbyUid');
+
+
+    if (lobbyUid) {
+        console.log("Calling loadPlayerArray with lobbyUid:", lobbyUid);
+        loadPlayerArray(lobbyUid);
+    } else {
+        console.warn("Missing lobbyUid in URL.");
+    }
+
+
+    firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+            currentUserUid = user.uid;
+
+
+            firebase.database().ref("/Lobby/gtn/" + lobbyUid).once("value").then((snapshot) => {
+                const data = snapshot.val();
+
+
+                if (data) {
+                    currentPlayer = currentUserUid === lobbyUid ? 1 : 2;
+                    listenForTurnChanges();
+                }
+            });
+        }
+    });
+});
+
+
+
+
+
+
+function submitButton() {
+    const user = firebase.auth().currentUser;
+    if (!user) {
+        alert("You must be logged in to play.");
+        return;
+    }
+   
+
+
+    console.log('%c submitButton(): ', 'color: ' + COLAD_D + '; background-color: ' + COLAD_E + ';');
+
+
+    const guess = parseInt(guessInput.value);
+
+
+    if (isNaN(guess) || guess < 1 || guess > 100) {
+        alert("Enter a valid number between 1 and 100.");
+        return;
+    }
+
+
+    firebase.database().ref('/Lobby/gtn/' + lobbyUid).once('value').then((snapshot) => {
+        const gameData = snapshot.val();
+        const correctNumber = gameData.number2Guess;
+        const currentTurn = gameData.currentTurn;
+
+
+        console.log('Current Turn:', currentTurn);
+        console.log('Current Player:', currentPlayer);
+        console.log('Guess:', guess);
+        console.log('Correct Number:', correctNumber);
+
+
+        if (currentPlayer !== currentTurn) {
+            alert("It's not your turn!");
+            return;
+        }
+
+
+        let hint = '';
+
+
+        if (guess === correctNumber) {
+            hint = `Player ${currentPlayer} guessed it right!`;
+
+
+            savingScores(user);
+            
+            firebase.database().ref('/Lobby/gtn/' + lobbyUid).update({
+                winner: currentPlayer,
+                gameOver: true
+            });
+        }else{
+            hint = guess > correctNumber ? "Too high!" : "Too low!";
+        }
+
+
+        const nextTurn = currentTurn === 1 ? 2 : 1;
+
+
+        if (currentTurn === 1) {
+            firebase.database().ref('/Lobby/gtn/' + lobbyUid).update({
+                p1Guess: guess,
+                currentTurn: nextTurn
+            });
+        } else {
+            firebase.database().ref('/Lobby/gtn/' + lobbyUid).update({
+                p2Guess: guess,
+                currentTurn: nextTurn
+            });
+        }
+
+
+        hintEl.textContent = hint;
+        guessInput.value = '';
+    });
+}
+
+
+
+
+function listenForTurnChanges() {
+
+
+  firebase.database().ref('/Lobby/gtn/' + lobbyUid + '/currentTurn').on('value', (snapshot) => {
+    const turn = snapshot.val();
+    if (turn === currentPlayer) {
+      guessInput.disabled = false;
+      document.getElementById("submit").disabled = false;
+      hintEl.textContent = "It's your turn!";
+    } else {
+      guessInput.disabled = true;
+      document.getElementById("submit").disabled = true;
+      hintEl.textContent = "Waiting for other player...";
+    }
+  });
+}
+
+
+
+
+function savingScores(user) {
+    console.log()
+
+
+    const uid = user.uid;
+
+
+    firebase.database().ref('/auth/users/' + uid + '/Games/Guess The Number/wins').once('value')
+        .then((snapshot) => {
+            let currentWins = parseInt(snapshot.val());
+            if (isNaN(currentWins)) currentWins = 0;
+            const newWins = currentWins + 1;
+
+
+            console.log(`Current wins for ${uid}:`, currentWins);
+            console.log(`Updating wins to:`, newWins);
+
+
+            firebase.database().ref('/auth/users/' + uid + '/Games/Guess The Number').update({
+                wins: newWins
+            });
+        });
+}
 
 
  
